@@ -15,6 +15,6 @@ coverage/
 dist/
 build/
 # Built TypeScript files
-*.js
-*.d.ts
-*.d.ts.map
+index.js
+index.d.ts
+index.d.ts.map

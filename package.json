@@ -1,0 +1,39 @@
+{
+  "name": "cpu-wait",
+  "version": "1.0.0",
+  "description": "CLI tool that waits for CPU load to drop below a threshold before executing commands",
+  "main": "cpu-wait.js",
+  "bin": {
+    "cpu-wait": "./cpu-wait.js"
+  },
+  "scripts": {
+    "test": "node cpu-wait.js echo 'Test successful'"
+  },
+  "keywords": [
+    "cpu",
+    "load",
+    "wait",
+    "threshold",
+    "monitor",
+    "cli",
+    "command",
+    "wrapper"
+  ],
+  "author": "snomiao",
+  "license": "MIT",
+  "dependencies": {
+    "node-os-utils": "^1.3.7",
+    "commander": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snomiao/cpu-wait.git"
+  },
+  "bugs": {
+    "url": "https://github.com/snomiao/cpu-wait/issues"
+  },
+  "homepage": "https://github.com/snomiao/cpu-wait#readme"
+}

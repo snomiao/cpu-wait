@@ -1,6 +1,6 @@
 {
   "name": "cpu-wait",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CLI tool that waits for CPU load to drop below a threshold before executing commands",
   "type": "module",
   "main": "index.js",

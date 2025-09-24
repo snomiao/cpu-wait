@@ -1,4 +1,4 @@
-import osu from 'node-os-utils';
+import osu from "node-os-utils";
 
 const cpu = osu.cpu;
 
@@ -9,14 +9,12 @@ export interface WaitCpuOptions {
   onProgress?: (message: string) => void;
 }
 
-export async function waitCpu(options: WaitCpuOptions = {}): Promise<void> {
-  const {
-    threshold = 80,
-    duration = 60,
-    interval = 5,
-    onProgress
-  } = options;
-
+export async function waitCpu({
+  threshold = 80,
+  duration = 3,
+  interval = 3,
+  onProgress,
+}: WaitCpuOptions = {}): Promise<void> {
   let lowCPUStart: number | null = null;
   let lastLogTime = 0;
 
@@ -27,28 +25,46 @@ export async function waitCpu(options: WaitCpuOptions = {}): Promise<void> {
     if (cpuUsage < threshold) {
       if (!lowCPUStart) {
         lowCPUStart = now;
-        onProgress?.(`CPU usage at ${cpuUsage.toFixed(1)}% - below threshold, monitoring for stability...`);
+        onProgress?.(
+          `CPU usage at ${cpuUsage.toFixed(
+            1
+          )}% - below threshold, monitoring for stability...`
+        );
       } else {
         const elapsed = (now - lowCPUStart) / 1000;
         if (elapsed >= duration) {
-          onProgress?.(`CPU has been below ${threshold}% for ${duration} seconds. Ready to execute.`);
+          onProgress?.(
+            `CPU has been below ${threshold}% for ${duration} seconds. Ready to execute.`
+          );
           return;
         } else if (onProgress && now - lastLogTime > 10000) {
           lastLogTime = now;
-          onProgress(`CPU at ${cpuUsage.toFixed(1)}% - stable for ${elapsed.toFixed(0)}/${duration} seconds...`);
+          onProgress(
+            `CPU at ${cpuUsage.toFixed(1)}% - stable for ${elapsed.toFixed(
+              0
+            )}/${duration} seconds...`
+          );
         }
       }
     } else {
       if (lowCPUStart && onProgress) {
-        onProgress(`CPU usage at ${cpuUsage.toFixed(1)}% - exceeded threshold, resetting timer.`);
+        onProgress(
+          `CPU usage at ${cpuUsage.toFixed(
+            1
+          )}% - exceeded threshold, resetting timer.`
+        );
       } else if (onProgress && now - lastLogTime > 10000) {
         lastLogTime = now;
-        onProgress(`CPU at ${cpuUsage.toFixed(1)}% - waiting for it to drop below ${threshold}%...`);
+        onProgress(
+          `CPU at ${cpuUsage.toFixed(
+            1
+          )}% - waiting for it to drop below ${threshold}%...`
+        );
       }
       lowCPUStart = null;
     }
 
-    await new Promise(resolve => setTimeout(resolve, interval * 1000));
+    await new Promise((resolve) => setTimeout(resolve, interval * 1000));
   }
 }
 

@@ -8,9 +8,14 @@
   "bin": {
     "cpu-wait": "./cpu-wait.js"
   },
+  "files": [
+    "index.ts",
+    "index.js",
+    "index.d.ts",
+    "cpu-wait.js"
+  ],
   "scripts": {
     "build": "bun build index.ts --outdir . --target node --format esm",
-    "build:types": "tsc --emitDeclarationOnly",
     "test": "node cpu-wait.js echo 'Test successful'",
     "release": "bunx standard-version && bun publish",
     "prepublishOnly": "bun run build && bun run build:types"

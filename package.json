@@ -1,6 +1,6 @@
 {
   "name": "cpu-wait",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "CLI tool that waits for CPU load to drop below a threshold before executing commands",
   "type": "module",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "build": "bun build index.ts --outdir . --target node --format esm",
     "test": "node cpu-wait.js echo 'Test successful'",
     "release": "bunx standard-version && bun publish",
-    "prepublishOnly": "bun run build && bun run build:types"
+    "prepublishOnly": "bun run build"
   },
   "keywords": [
     "cpu",

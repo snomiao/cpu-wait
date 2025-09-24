@@ -9,7 +9,7 @@ import { waitCpu } from './index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const packageJson = JSON.parse(readFileSync(join(__dirname, 'package.json'), 'utf8')); //TODO: can be imported directly in future Node.js versions
+const packageJson = JSON.parse(readFileSync(join(__dirname, 'package.json'), 'utf8')); // TODO: can be imported directly in future Node.js versions
 
 async function main() {
   program

@@ -4,14 +4,13 @@
   "description": "CLI tool that waits for CPU load to drop below a threshold before executing commands",
   "type": "module",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "index.ts",
   "bin": {
     "cpu-wait": "./cpu-wait.js"
   },
   "files": [
     "index.ts",
     "index.js",
-    "index.d.ts",
     "cpu-wait.js"
   ],
   "scripts": {

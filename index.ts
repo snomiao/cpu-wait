@@ -2,19 +2,19 @@ import osu from "node-os-utils";
 
 const cpu = osu.cpu;
 
-export interface WaitCpuOptions {
+export interface CpuWaitOptions {
   threshold?: number;
   duration?: number;
   interval?: number;
   onProgress?: (message: string) => void;
 }
 
-export async function waitCpu({
+export async function cpuWait({
   threshold = 80,
   duration = 3,
   interval = 3,
   onProgress,
-}: WaitCpuOptions = {}): Promise<void> {
+}: CpuWaitOptions = {}): Promise<void> {
   let lowCPUStart: number | null = null;
   let lastLogTime = 0;
 
@@ -68,4 +68,4 @@ export async function waitCpu({
   }
 }
 
-export default waitCpu;
+export default cpuWait;

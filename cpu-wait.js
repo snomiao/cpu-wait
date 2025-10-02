@@ -5,7 +5,7 @@ import { program } from 'commander';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { waitCpu } from './index.js';
+import { cpuWait } from './index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -48,7 +48,7 @@ async function main() {
       console.log(`Settings: threshold=${options.threshold}%, duration=${options.duration}s, interval=${options.interval}s`);
     }
 
-    await waitCpu({
+    await cpuWait({
       threshold: options.threshold,
       duration: options.duration,
       interval: options.interval,
